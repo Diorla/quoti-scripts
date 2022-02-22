@@ -1,6 +1,6 @@
 import Chance from "chance";
 import isRightInterval from "../src/isDue/isRightInterval";
-import { isDue } from "../src";
+import isDue from "../src/isDue";
 import dayjs from "dayjs";
 import "jest-extended";
 
