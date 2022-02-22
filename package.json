@@ -25,10 +25,14 @@
       "pre-commit": "tsdx lint"
     }
   },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended/all"
+    ]
+  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
-    "singleQuote": true,
     "trailingComma": "es5"
   },
   "name": "quoti-scripts",
@@ -49,6 +53,7 @@
     "@types/chance": "^1.1.3",
     "chance": "^1.1.8",
     "husky": "^7.0.4",
+    "jest-extended": "^2.0.0",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
