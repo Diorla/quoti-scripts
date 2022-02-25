@@ -34,7 +34,7 @@ export default function isDue(
       frequencyValue
     );
 
-    return isTheWeek && dayOfWeek.includes(dayjs().day());
+    return isTheWeek && dayOfWeek.includes(dayjs(currentDate).day());
   }
 
   // monthly check

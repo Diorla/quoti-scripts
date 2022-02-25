@@ -37,7 +37,14 @@ describe("testing if the date is due", () => {
     const interval = chance.integer({ min: 0, max: 6 });
     const diff = chance.integer() + interval;
     const intervalTrue = isRightInterval(diff, interval);
-    const today = dayjs().day();
+
+    const startDate = dayjs(chance.birthday());
+    const currentDate = startDate.add(
+      chance.integer({ min: 1, max: 21 }),
+      "day"
+    );
+
+    const today = currentDate.day();
     const weekdays = [chance.integer({ min: 0, max: 6 })];
     const weekdaysIncludesToday = weekdays.includes(today);
 
@@ -45,7 +52,7 @@ describe("testing if the date is due", () => {
      * So for a week to be true, weekday must contain the day of the compare date
      * And the interval should match as well
      */
-    expect(isDue(dayjs(), dayjs(), "W", interval, weekdays)).toBe(
+    expect(isDue(startDate, currentDate, "W", interval, weekdays)).toBe(
       intervalTrue && weekdaysIncludesToday
     );
   });
