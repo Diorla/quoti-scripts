@@ -1,3 +1,3 @@
-type FrequencyType = "D" | "W" | "M" | "Y";
+type FrequencyType = "D" | "d" | "W" | "w" | "M" | "m" | "Y" | "y";
 
 export default FrequencyType;

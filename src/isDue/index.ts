@@ -21,14 +21,14 @@ export default function isDue(
   dayOfWeek: number[] = []
 ): boolean {
   // daily check
-  if (frequencyType === "D")
+  if (frequencyType.toUpperCase() === "D")
     return isRightInterval(
       dayjs(currentDate).diff(startDate, "d"),
       frequencyValue
     );
 
   // weekly check
-  if (frequencyType === "W") {
+  if (frequencyType.toUpperCase() === "W") {
     const isTheWeek = isRightInterval(
       dayjs(currentDate).diff(startDate, "w"),
       frequencyValue
@@ -38,7 +38,7 @@ export default function isDue(
   }
 
   // monthly check
-  if (frequencyType === "M") {
+  if (frequencyType.toUpperCase() === "M") {
     const isThisMonth = isRightInterval(
       dayjs(currentDate).diff(startDate, "m"),
       frequencyValue
@@ -48,7 +48,7 @@ export default function isDue(
   }
 
   // yearly check
-  if (frequencyType === "Y") {
+  if (frequencyType.toUpperCase() === "Y") {
     const isThisYear = isRightInterval(
       dayjs(currentDate).diff(startDate, "y"),
       frequencyValue
