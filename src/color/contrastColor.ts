@@ -26,6 +26,16 @@ export function isDark(color: string, type?: ColorType) {
     return lum <= 50;
   }
 
+  if (type === "hsl") {
+    const clr = color
+      .replace("hsl", "")
+      .replace("(", "")
+      .replace(")", "")
+      .split(" ");
+
+    const [, , lum] = clr;
+    return Number(lum) <= 50;
+  }
   const [, , lum] = hex.hsl(color);
   return lum <= 50;
 }

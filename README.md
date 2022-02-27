@@ -1,9 +1,9 @@
 # Quoti-scripts
-![Quoti](./schedule.svg)
-# Introduction
 Utility functions to be used in `quoti` ecosystem
 
-![GitHub branch checks state](https://img.shields.io/github/checks-status/diorla/quoti-scripts/main)
+![Quoti](https://github.com/Diorla/quoti-scripts/raw/main/schedule.svg)
+
+# Badges
 ![GitHub language count](https://img.shields.io/github/languages/count/diorla/quoti-scripts)
 ![GitHub top language](https://img.shields.io/github/languages/top/diorla/quoti-scripts)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/quoti-scripts)
@@ -87,4 +87,115 @@ const currentDate = new Date(2021, 3, 28);
 
 // Every 8 years
 console.log(isDue(startDate, currentDate, "Y", 8)); // true
+```
+
+## ```color```
+
+### ```darken``` and ```lighten```
+Adjust the shade of the colour to a lighter or darker shade.
+```ts
+color: string;
+percent: number;
+type?: "rgb" | "hsl" | "hex" | "keyword";
+```
+the default value of `type` is `hex`
+
+```ts
+const { color } = require("quoti-scripts")
+
+// css colour keywords
+const initialColour = "blue";
+const finalColour = color.darken(initialColour, 50, "keyword")
+
+console.log(finalColour); // "#000080"
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+// hex colour
+const initialColour = "#fa5a51";
+const finalColour = color.lighten(initialColour, 45)
+
+console.log(finalColour); // "#FEE4E3"
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+// hsl
+const initialColour = "hsl(234 79% 55%)";
+const finalColour = color.darken(initialColour, 45, "hsl")
+
+console.log(finalColour); // "hsl(234deg 79% 30.25%)"
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+// rgb
+const initialColour = "rgb(140, 37, 14)";
+const finalColour = color.lighten(initialColour, 45, "rgb")
+
+console.log(finalColour); // "rgb(202, 53, 20)"
+```
+
+### ```contrastColor```
+Returns a contrast colour that is best for accessibility. It only returns `white` if the colour provided is too dark or `black` if the colour is too light.
+
+```ts
+color: string;
+type?: "rgb" | "hsl" | "hex" | "keyword";
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+const firstColour = "rgb(140, 37, 14)";
+const secondColour = "rgb(202, 100, 120)";
+
+const firstResult = color.contrastColor(firstColour, "rgb");
+const secondResult = color.contrastColor(secondColour, "rgb");
+
+console.log(firstResult); // white
+console.log(secondResult); // black
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+const firstColour = "hsl(140deg 37% 14%)";
+const secondColour = "hsl(202deg 100% 78%)";
+
+const firstResult = color.contrastColor(firstColour, "hsl");
+const secondResult = color.contrastColor(secondColour, "hsl");
+
+console.log(firstResult); // white
+console.log(secondResult); // black
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+const firstColour = "#ade";
+const secondColour = "#ad301a";
+
+const firstResult = color.contrastColor(firstColour);
+const secondResult = color.contrastColor(secondColour);
+
+console.log(firstResult); // black
+console.log(secondResult); // white
+```
+
+```ts
+const { color } = require("quoti-scripts")
+
+const firstColour = "pink";
+const secondColour = "forestgreen";
+
+const firstResult = color.contrastColor(firstColour, "keyword");
+const secondResult = color.contrastColor(secondColour, "keyword");
+
+console.log(firstResult); // black
+console.log(secondResult); // white
 ```
