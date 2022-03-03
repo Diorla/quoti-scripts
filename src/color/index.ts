@@ -1,5 +1,5 @@
-import darken from "./darken";
-import lighten from "./lighten";
+import darkenColor from "./darkenColor";
+import lightenColor from "./lightenColor";
 import contrastColor from "./contrastColor";
 
-export default { darken, lighten, contrastColor };
+export default { darkenColor, lightenColor, contrastColor };

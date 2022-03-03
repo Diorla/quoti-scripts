@@ -2,7 +2,8 @@ import Chance from "chance";
 import contrastColor from "../src/color/contrastColor";
 import adjustLuminosity from "../src/color/adjustLuminosity";
 import "jest-extended";
-import color from "../src/color";
+import darkenColor from "../src/color/darkenColor";
+import lightenColor from "../src/color/lightenColor";
 
 describe("should test color functions", () => {
   const chance = new Chance();
@@ -55,20 +56,20 @@ describe("should test color functions", () => {
     const percentage = chance.integer({ min: 0, max: 100 });
 
     // RGB
-    const darkRGB = color.darken("rgb(50, 150, 200)", percentage, "rgb");
-    const lightRGB = color.lighten("rgb(50, 150, 200)", percentage, "rgb");
+    const darkRGB = darkenColor("rgb(50, 150, 200)", percentage, "rgb");
+    const lightRGB = lightenColor("rgb(50, 150, 200)", percentage, "rgb");
     const includesRGB = darkRGB.includes("rgb") && lightRGB.includes("rgb");
     expect(includesRGB).toBe(true);
 
     // Hex
-    const darkHex = color.darken("#ade01a", percentage);
-    const lightHex = color.lighten("#ade01a", percentage);
+    const darkHex = darkenColor("#ade01a", percentage);
+    const lightHex = lightenColor("#ade01a", percentage);
     const includesHex = darkHex.includes("#") && lightHex.includes("#");
     expect(includesHex).toBe(true);
 
     // HSL
-    const darkHSL = color.darken("hsl(270deg 50% 40%)", percentage, "hsl");
-    const lightHSL = color.lighten("hsl(270deg 50% 40%)", percentage, "hsl");
+    const darkHSL = darkenColor("hsl(270deg 50% 40%)", percentage, "hsl");
+    const lightHSL = lightenColor("hsl(270deg 50% 40%)", percentage, "hsl");
     const includesHSL = darkHSL.includes("hsl") && lightHSL.includes("hsl");
     expect(includesHSL).toBe(true);
   });

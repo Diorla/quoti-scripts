@@ -11,9 +11,9 @@ import adjustRGB from "./adjustRGB";
  * @param type one of the color types to match `color`, e.g. rgb, hsl, hex, keyword, default is hex
  * @returns string that is modified based on degree
  */
-export default function darken(
+export default function darkenColor(
   color: string,
-  percent: number,
+  percent = 20,
   type?: ColorType
 ) {
   if (type === "rgb") {

@@ -35,7 +35,7 @@ currentDate: string | number | Date | Dayjs;
 frequencyType: "D" | "d" | "W" | "w" | "M" | "m" | "Y" | "y";
 frequencyValue: number;
 // day of the weeks, 0 (sun) to 6 (sat)
-dayOfWeek: number[] = [];
+dayOfWeek?: number[] = [];
 ```
 
 ```ts
@@ -95,47 +95,47 @@ console.log(isDue(startDate, currentDate, "Y", 8)); // true
 Adjust the shade of the colour to a lighter or darker shade.
 ```ts
 color: string;
-percent: number;
-type?: "rgb" | "hsl" | "hex" | "keyword";
+percent?: number - default value is 20
+type?: "rgb" | "hsl" | "hex" | "keyword" - default value is "hex"
 ```
 the default value of `type` is `hex`
 
 ```ts
-const { color } = require("quoti-scripts")
+const { darkenColor } = require("quoti-scripts")
 
 // css colour keywords
 const initialColour = "blue";
-const finalColour = color.darken(initialColour, 50, "keyword")
+const finalColour = darkenColor(initialColour, 50, "keyword")
 
 console.log(finalColour); // "#000080"
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { lightenColor } = require("quoti-scripts")
 
 // hex colour
 const initialColour = "#fa5a51";
-const finalColour = color.lighten(initialColour, 45)
+const finalColour = lightenColor(initialColour, 45)
 
 console.log(finalColour); // "#FEE4E3"
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { darkenColor } = require("quoti-scripts")
 
 // hsl
 const initialColour = "hsl(234 79% 55%)";
-const finalColour = color.darken(initialColour, 45, "hsl")
+const finalColour = darkenColor(initialColour, 45, "hsl")
 
 console.log(finalColour); // "hsl(234deg 79% 30.25%)"
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { lightenColor } = require("quoti-scripts")
 
 // rgb
 const initialColour = "rgb(140, 37, 14)";
-const finalColour = color.lighten(initialColour, 45, "rgb")
+const finalColour = lightenColor(initialColour, 45, "rgb")
 
 console.log(finalColour); // "rgb(202, 53, 20)"
 ```
@@ -149,52 +149,52 @@ type?: "rgb" | "hsl" | "hex" | "keyword";
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { contrastColor } = require("quoti-scripts")
 
 const firstColour = "rgb(140, 37, 14)";
 const secondColour = "rgb(202, 100, 120)";
 
-const firstResult = color.contrastColor(firstColour, "rgb");
-const secondResult = color.contrastColor(secondColour, "rgb");
+const firstResult = contrastColor(firstColour, "rgb");
+const secondResult = contrastColor(secondColour, "rgb");
 
 console.log(firstResult); // white
 console.log(secondResult); // black
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { contrastColor } = require("quoti-scripts")
 
 const firstColour = "hsl(140deg 37% 14%)";
 const secondColour = "hsl(202deg 100% 78%)";
 
-const firstResult = color.contrastColor(firstColour, "hsl");
-const secondResult = color.contrastColor(secondColour, "hsl");
+const firstResult = contrastColor(firstColour, "hsl");
+const secondResult = contrastColor(secondColour, "hsl");
 
 console.log(firstResult); // white
 console.log(secondResult); // black
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { contrastColor } = require("quoti-scripts")
 
 const firstColour = "#ade";
 const secondColour = "#ad301a";
 
-const firstResult = color.contrastColor(firstColour);
-const secondResult = color.contrastColor(secondColour);
+const firstResult = contrastColor(firstColour);
+const secondResult = contrastColor(secondColour);
 
 console.log(firstResult); // black
 console.log(secondResult); // white
 ```
 
 ```ts
-const { color } = require("quoti-scripts")
+const { contrastColor } = require("quoti-scripts")
 
 const firstColour = "pink";
 const secondColour = "forestgreen";
 
-const firstResult = color.contrastColor(firstColour, "keyword");
-const secondResult = color.contrastColor(secondColour, "keyword");
+const firstResult = contrastColor(firstColour, "keyword");
+const secondResult = contrastColor(secondColour, "keyword");
 
 console.log(firstResult); // black
 console.log(secondResult); // white
