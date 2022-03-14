@@ -1,9 +1,7 @@
-import timeConvertProps from "./timeProps";
+import TimeProps from "../interfaces/TimeProps";
+import TimeType from "../interfaces/TimeType";
 
-export default function timeConvert(
-  time: timeConvertProps,
-  to?: "ms" | "ss" | "mm" | "hh"
-) {
+export default function timeConvert(time: TimeProps, to?: TimeType) {
   let { hh = 0, mm = 0, ss = 0, ms = 0 } = time;
   if (to === "hh") {
     hh += mm / 60;
