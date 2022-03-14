@@ -63,5 +63,10 @@
   "dependencies": {
     "color-convert": "^2.0.1",
     "dayjs": "^1.10.7"
-  }
+  },
+  "keywords": [
+    "color",
+    "schedule",
+    "range"
+  ]
 }
